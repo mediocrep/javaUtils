@@ -34,13 +34,14 @@ public class StringUtils {
     public static String getRandomStr2(int length){
         //1.  定义一个字符串（A-Z，a-z，0-9）即62个数字字母；
         String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*!@#$%^&*()_+<>?";
+        int strLen = str.length();
         //2.  由Random生成随机数
         Random random=new Random();
         StringBuffer sb=new StringBuffer();
         //3.  长度为几就循环几次
         for(int i=0; i<length; ++i){
             //从62个的数字或字母中选择
-            int number=random.nextInt(62);
+            int number=random.nextInt(strLen);
             //将产生的数字通过length次承载到sb中
             sb.append(str.charAt(number));
         }
@@ -85,8 +86,4 @@ public class StringUtils {
     public static boolean isNotEmpty(String str){
         return !isEmpty(str);
     }
-
-
-
-
 }
