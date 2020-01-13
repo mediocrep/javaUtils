@@ -1,16 +1,15 @@
-package com.apiTest;
+package com.utils.test;
 
-import java.awt.Graphics;
+import org.apache.log4j.Logger;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
-
-import javax.imageio.ImageIO;
-
-import org.apache.log4j.Logger;
 
 /**
  * 大小图合并工具类
