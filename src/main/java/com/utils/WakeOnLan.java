@@ -7,28 +7,28 @@ import java.util.Map;
 
 public class WakeOnLan {
 
-	/**
+    /**
      * main方法，发送UDP广播，实现远程开机
      */
-	public static void main(String[] args) {
-            System.out.println("网络唤醒程序开始执行...");
+    public static void main(String[] args) {
+        System.out.println("网络唤醒程序开始执行...");
         /*main静态方法中不能使用 this
 	    报错：'run.halo.app.WakeOnLan.this' cannot be referenced from a static context
         注：Java获取当前类名的两种方法:
         1.适用于非静态方法：this.getClass().getName()
         2.适用于静态方法：Thread.currentThread().getStackTrace()[1].getClassName()
         */
-	    if(args.length < 2
-        || (!"asus".equals(args[0]) && !"lenovo".equals(args[0]))
-        || (!"lan".equals(args[1]) && !"wan".equals(args[1]))){
+        if(args.length < 2
+                || (!"lan".equals(args[0]) && !"wan".equals(args[0]))
+                || (!"asus".equals(args[1]) && !"lenovo".equals(args[1]))){
             System.out.println("Usage: java "
                     + Thread.currentThread().getStackTrace()[1].getClassName()
-                    + " (asus | lenovo) (lan | wan)");
+                    + " (lan | wan) (asus | lenovo)");
             return;
         }
 
         String ip = "";
-	    int port = 0;
+        int port = 0;
         //转换为2进制的魔术包数据
         byte[] magicPacketArr;
         //广播魔术包
@@ -50,28 +50,28 @@ public class WakeOnLan {
 
             magicPacketArr = hexToBinary(magicPacketStr.toString());
 
-            if("lan".equals(args[1])){
+            if("lan".equals(args[0])){
                 ip = "255.255.255.255"; //广播IP地址
                 port = 9;//端口号
                 sb.append("局域网唤醒：");
-            }else if("wan".equals(args[1])){
+            }else if("wan".equals(args[0])){
                 sb.append("广域网唤醒：");
                 ip = "mediocrepeople.tpddns.cn"; //IP地址
-                if("asus".equals(args[0])){
+                if("asus".equals(args[1])){
                     port = 9609;//端口号
-                }else if("lenovo".equals(args[0])){
+                }else if("lenovo".equals(args[1])){
                     port = 11609;//端口号
                 }
             }
 
-            if("asus".equals(args[0])){
+            if("asus".equals(args[1])){
                 sb.append("华硕笔记本电脑").append("\n");
-            }else if("lenovo".equals(args[0])){
+            }else if("lenovo".equals(args[1])){
                 sb.append("联想台式电脑").append("\n");
             }
             sb.append("MAC：").append(targetMAC).append("\n")
-              .append("IP：").append(ip).append("\n")
-              .append("PORT：").append(port).append("\n");
+                    .append("IP：").append(ip).append("\n")
+                    .append("PORT：").append(port).append("\n");
             System.out.println(sb.toString());
 
             //1.获取ip地址
@@ -108,20 +108,20 @@ public class WakeOnLan {
             }
 
         }
-	}
+    }
 
-	/**
+    /**
      * 将16进制字符串转换为用byte数组表示的二进制形式
      * @param hexString：16进制字符串
      * @return：用byte数组表示的十六进制数
      */
-	private static byte[] hexToBinary(String hexString) {
-		//1.去除字符串中的16进制标识"0X"并将所有字母转换为大写
+    private static byte[] hexToBinary(String hexString) {
+        //1.去除字符串中的16进制标识"0X"并将所有字母转换为大写
         hexString = hexString.toUpperCase().replace("0X", "");
-		//2.定义变量：用于存储转换结果的数组
-		int len = hexString.length() / 2;
+        //2.定义变量：用于存储转换结果的数组
+        int len = hexString.length() / 2;
         byte[] result = new byte[len];
-        
+
         //3.开始转换
         //	3.1.定义两个临时存储数据的变量（貌似没用）
 //        char tmp1 = '0';
@@ -133,15 +133,14 @@ public class WakeOnLan {
         }
         System.out.println();
         return result;
-	}
+    }
 
-	/**
+    /**
      * 用于将16进制的单个字符映射到10进制的方法
      * @param c：16进制数的一个字符
      * @return：对应的十进制数
      */
-	private static int hexToDec(char c) {
-		return (byte)"0123456789ABCDEF".indexOf(c);
-	}
-
+    private static int hexToDec(char c) {
+        return (byte)"0123456789ABCDEF".indexOf(c);
+    }
 }

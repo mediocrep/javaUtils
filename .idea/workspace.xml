@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="835cfe7e-7da0-467b-a60a-c7d36c38dccf" name="Default" comment="" />
+    <list default="true" id="835cfe7e-7da0-467b-a60a-c7d36c38dccf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/utils/test/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="209">
               <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,8 +42,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            <state relative-caret-position="-304">
+              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4761#4762#0" expanded="true" />
+                <element signature="e#4819#4820#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/utils/test/ImageUtilTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+            <state relative-caret-position="342">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -57,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="570">
+              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -73,6 +81,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>IMAGEUTIL</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -84,9 +97,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/utils/test/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utils/Base64Utils.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/utils/test/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/utils/test/ImageUtilTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java" />
       </list>
     </option>
   </component>
@@ -256,6 +269,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,14 +333,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578880199425" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579050898095" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -468,7 +481,8 @@
       <workItem from="1568366294659" duration="775000" />
       <workItem from="1572097695179" duration="2023000" />
       <workItem from="1572138274582" duration="2378000" />
-      <workItem from="1578879279277" duration="909000" />
+      <workItem from="1578879279277" duration="1014000" />
+      <workItem from="1579050778515" duration="119000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit. some common utilities of Java.">
       <created>1566838471141</created>
@@ -500,12 +514,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17495000" />
+    <option name="totallyTimeSpent" value="17719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1600" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24352331" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24740933" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -601,6 +616,7 @@
     <entry file="jar://$PROJECT_DIR$/../../mavenRepository/com/h2database/h2/1.4.200/h2-1.4.200.jar!/org/h2/Driver.class" />
     <entry file="jar://$PROJECT_DIR$/../../jdk1.8.0_144/src.zip!/java/util/Base64.java" />
     <entry file="jar://$PROJECT_DIR$/../../mavenRepository/com/h2database/h2/1.4.200/h2-1.4.200-sources.jar!/org/h2/Driver.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utils/ImageUtils.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utils/Base64Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -613,25 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/utils/test/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="209">
           <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utils/ImageUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -640,15 +639,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/utils/test/ImageUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        <state relative-caret-position="342">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utils/WakeOnLan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        <state relative-caret-position="-304">
+          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4761#4762#0" expanded="true" />
+            <element signature="e#4819#4820#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
