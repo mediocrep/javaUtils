@@ -16,7 +16,7 @@ import java.util.Date;
  * @author Administrator
  */
 public class ImageUtilTest {
-	private static final Logger log4j = Logger.getLogger(ImageUtilTest.class);
+	private static final Logger log = Logger.getLogger(ImageUtilTest.class);
 	
 	private final int WIDTH =220;
 	
@@ -63,12 +63,12 @@ public class ImageUtilTest {
 		ImageUtilTest img = new ImageUtilTest();
 		try {
 			long b = new Date().getTime();
-			String oldFile = "D:\\test\\pics\\shamo.jpg";
-			String zoomFile ="D:\\test\\pics\\shamo_z.jpg";
-			String nowFile = "D:\\test\\pics\\shamo_n.jpg";
+			String oldFile = "D:\\entertainment\\pic\\test.png";
+			String zoomFile ="D:\\entertainment\\pic\\test.png_z.jpg";
+			String nowFile = "D:\\entertainment\\pic\\test.png_n.jpg";
 			img.zoom(oldFile, zoomFile);
 			img.HBF(oldFile, zoomFile, nowFile);
-			log4j.info("用时："+(new Date().getTime()-b)+"毫秒");
+			log.info("用时："+(new Date().getTime()-b)+"毫秒");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

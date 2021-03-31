@@ -13,6 +13,13 @@ public interface Constants {
         "y","z","_","-"
     };
 
+    public static final String REPORT_YEAR = "2020";
+    public static final String REPORT_NO = "RP01-2001000000001";
+    public static final String REPORT_NAME = "2020 Report (just for test)";
+    public static final String REPORT_TITLE = "参加调研的样本数量";
+
+
+
 
 
 
