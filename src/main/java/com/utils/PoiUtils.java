@@ -365,6 +365,7 @@ public class PoiUtils {
         return rowIndex;
     }
 
+    // TODO: merger some cells of a column
     /*private void firstExcelCellMerge(int rowIndex, Sheet sheet, int dataSize, List<?> list, CellStyle dataCellStyle) {
         int ksRows = 0;
         int jsRows = 0;
