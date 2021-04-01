@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="835cfe7e-7da0-467b-a60a-c7d36c38dccf" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/utils/ThreadUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/utils/threadTask/Test1Callable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/utils/threadTask/Test2Callable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javaUtils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/javaUtils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/PoiUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/utils/PoiUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/entity/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/utils/entity/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/utils/test/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/utils/test/UnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,36 +290,23 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579050898095" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.303551" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.utils.test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/utils" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.utils.threadTask" />
+      <recent name="com.utils.test" />
+    </key>
   </component>
-  <component name="RunManager" selected="TestNG.UnitTest.test2">
+  <component name="RunManager" selected="TestNG.UnitTest.test3">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Base64Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.utils.Base64Utils" />
-      <module name="javaUtils" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -394,6 +389,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UnitTest.test3" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="javaUtils" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.utils.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.utils.test" />
+      <option name="MAIN_CLASS_NAME" value="com.utils.test.UnitTest" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -413,19 +427,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Base64Utils" />
       <item itemvalue="Application.ImageUtilTest" />
       <item itemvalue="Application.UnitTest" />
       <item itemvalue="TestNG.UnitTest.test2" />
       <item itemvalue="TestNG.UnitTest" />
+      <item itemvalue="TestNG.UnitTest.test3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.UnitTest.test3" />
         <item itemvalue="TestNG.UnitTest.test2" />
         <item itemvalue="TestNG.UnitTest" />
         <item itemvalue="Application.ImageUtilTest" />
         <item itemvalue="Application.UnitTest" />
-        <item itemvalue="Application.Base64Utils" />
       </list>
     </recent_temporary>
   </component>

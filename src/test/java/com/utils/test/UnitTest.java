@@ -3,11 +3,13 @@ package com.utils.test;
 //import java.util.Base64;
 
 import com.utils.PoiUtils;
+import com.utils.ThreadUtils;
 import org.testng.annotations.Test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UnitTest {
 
@@ -53,4 +55,14 @@ public class UnitTest {
         PoiUtils poiUtils = new PoiUtils();
         poiUtils.exportToExcel();
     }
+
+    @Test
+    public void test3(){
+        List<List<String>> dataList = ThreadUtils.getDataList();
+        for (List<String> list : dataList){
+            list.forEach(data -> System.out.println(data));
+        }
+    }
+
+
 }

@@ -19,6 +19,12 @@ import java.util.List;
 
 public class PoiUtils {
 
+    /**
+     * methods of creating workbook:
+     * 1. HSSFWorkbook excelFile = new HSSFWorkbook();  // generate a xls file
+     * 2. XSSFWorkbook excelFile = new XSSFWorkbook();  // generate a xlsx file
+     * 3. HSSFWorkbook excelFile = new HSSFWorkbook(new ByteArrayInputStream(new ByteArrayOutputStream().toByteArray()))
+     */
     public void exportToExcel() {
         OutputStream outputStream = null;
         FileOutputStream fileOutputStream = null;
@@ -29,6 +35,8 @@ public class PoiUtils {
             outputStream.write(bytes);
             outputStream.flush();
             exportToXlsx();
+            // method 3 of creating workbook
+            createWorkbookAndSheets();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -77,10 +85,10 @@ public class PoiUtils {
 
             //参加调研的样本数量
             List<Report> list = new ArrayList<>();
-            Report r1 = new Report("1","报告名称", "2020 Industry Report");
-            Report r2 = new Report("2", "样本数量（单位：户）", "161");
-            Report r3 = new Report("3", "职工人数（单位：人）", "35,610");
-            Report r4 = new Report("4", "领导人数（单位：人）", "358");
+            Report r1 = new Report("001","报告名称", "2020 Industry Report");
+            Report r2 = new Report("002", "样本数量（单位：户）", "161");
+            Report r3 = new Report("003", "职工人数（单位：人）", "35,610");
+            Report r4 = new Report("004", "领导人数（单位：人）", "358");
 
             list.add(r1);
             list.add(r2);
@@ -96,7 +104,6 @@ public class PoiUtils {
             e.printStackTrace();
         }
     }
-
 
     public byte[] exportToXls(){
         //字体
@@ -147,6 +154,38 @@ public class PoiUtils {
             e.printStackTrace();
         }
         return bytes;
+    }
+
+    /**
+     * 1. method 3 of creating workbook
+     * 2. workbook add sheets
+     */
+    public void createWorkbookAndSheets(){
+
+        HSSFWorkbook excelFile;
+        HSSFWorkbook workbook;
+        ByteArrayOutputStream baos;
+
+        try {
+            baos = new ByteArrayOutputStream();
+            workbook = new HSSFWorkbook();
+            workbook.createSheet("sheet1");
+            workbook.createSheet("sheet2");
+            workbook.write(baos);
+            byte[] ba = baos.toByteArray();
+
+            ByteArrayInputStream bais = new ByteArrayInputStream(ba);
+            excelFile = new HSSFWorkbook(bais);
+
+            OutputStream outputStream = new FileOutputStream(new File("D:\\study\\java\\poi\\createWorkbookAndSheets.xls"));
+            excelFile.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void setColor(short index, byte r, byte g, byte b, HSSFWorkbook excelFile) {
