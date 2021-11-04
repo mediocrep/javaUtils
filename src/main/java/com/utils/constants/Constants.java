@@ -18,8 +18,17 @@ public interface Constants {
     public static final String REPORT_NAME = "2020 Report (just for test)";
     public static final String REPORT_TITLE = "参加调研的样本数量";
 
+    public static final String LOCAL_PIC_PATH = "/home/witt/ettmt/pic/beau";
+    public static final String LOCAL_PIC_PATH2 = "/home/witt/ettmt/pic/pic20211104_2";
+    public static final String LOCAL_PIC_PATH3 = "/home/witt/ettmt/pic/pic20211104_3";
+    public static final String LOCAL_PIC_PATH4 = "/home/witt/ettmt/pic/pic20211104_4";
 
-
+    // time type
+    public final static String TIME_SECOND = "SECOND";
+    public final static String TIME_MILLISECOND = "MILLISECOND";
+    public final static String TIME_YMD = "YYYY-MM-dd";
+    public final static String TIME_HMS = "HH:mm:ss";
+    public final static String TIME_YMDHMS = "YYYY-MM-dd HH:mm:ss";
 
 
 
