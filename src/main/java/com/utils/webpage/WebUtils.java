@@ -70,13 +70,14 @@ public class WebUtils {
             }
         });
 
-        System.out.format("程序抓取图片总数：%d，其中成功数：%d（抓取成功的图片中，本身存在于本地不用抓取的图片数为：%d），失败数：%d%n", counter.get("success") + counter.get("fail"),
+        System.out.format("%n程序抓取图片总数：%d，其中成功数：%d（抓取成功的图片中，本身存在于本地不用抓取的图片数为：%d），失败数：%d%n", counter.get("success") + counter.get("fail"),
                 counter.get("success"), counter.get("exist"), counter.get("fail"));
     }
 
     private static void batchGetPicByHtml(String line, final String localPath, Map<String, Integer> counter) {
 //        String line = "https://m.raoniao.com/rentiyishu/32269.html";
-        String prefix = line.substring(0, line.indexOf("/", 10));
+        String prefix = line.substring(0, line.indexOf("/", 10));  // prefix eg. "https://m.raoniao.com"
+        String prefix2 = line.substring(0, line.indexOf("/", 26));  // 有时获取的a标签中的href为这种格式“27252_3.html”，此时需要用prefix2，否则拼接的nextUrl就是错的
         String imgUrl = "";  // 图片url
         String tmpUrl = "";  // 临时存放当前网页的url
         String nextUrl = "";  // 下一个网页的url
@@ -107,12 +108,12 @@ public class WebUtils {
         // 循环抓取每一页的图片
         // line.equals(nextUrl) 表示 不停地处理下一页，最终处理完了所有页，最终回到了第一页；fail < 6 表示 下载失败的页面中的图片不超过5个
         while (!line.equals(nextUrl) && fail < 6) {
+            imgUrl = "";
             tmpUrl = nextUrl;
             if (null != doc) {
                 Elements children = doc.select("div.ArticleBox").first().children();
                 for (Element element : children) {  //
 //                    Elements children2 = element.children();
-                    imgUrl = "";
                     if (!element.children().isEmpty()) {
 //                    System.out.println("children is not null.");
                         Element img = element.select("img").first();
@@ -159,7 +160,18 @@ public class WebUtils {
                                         fetchToLocal(inputStream, outputStream);
                                     }
                                     flag = true;
-                                    nextUrl = prefix + element.select("a").first().attr("href");
+
+                                    // 拼接nextUrl
+                                    String href = element.select("a").first().attr("href");
+                                    if (StringUtils.isNotBlank(href)) {  // href eg. /rentiyishu/27571.html
+                                        if (href.length() > 15) {
+                                            nextUrl = prefix + href;
+                                        } else if (href.contains("/")) {  // href eg. /27252_3.html
+                                            nextUrl = prefix2 + href;
+                                        } else {  // href eg. 27252_3.html
+                                            nextUrl = prefix2 + "/" + href;
+                                        }
+                                    }
                                     break;
                                 } catch (IOException e) {
                                     continuingFail++;
@@ -170,6 +182,10 @@ public class WebUtils {
                                 }
                             }
                         }
+                    }
+
+                    if (flag) {
+                        break;
                     }
                 }
             }
@@ -210,6 +226,7 @@ public class WebUtils {
             flag = false;  // 重置flag为false
             continuingFail = 0;  // 不管抓取图片成功还是失败，都重置 计数器 continuingFail 为 0
 
+            doc = null;  // 重置doc 为 null，解决“由于nextUrl网址错误，从而导致下面的Jsoup.parse()解析失败，从而导致doc还是上一次解析的内容，从而导致下一次循环赋值给nextUrl的还是之前的错误的网址，从而死循环”的bug
             try {
                 doc = Jsoup.parse(new URL(nextUrl), 20000);
 //                System.out.println(doc);
