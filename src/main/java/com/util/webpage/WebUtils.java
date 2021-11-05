@@ -1,7 +1,7 @@
-package com.utils.webpage;
+package com.util.webpage;
 
-import com.utils.TimeUtils;
-import com.utils.constants.Constants;
+import com.util.constants.Constants;
+import com.util.TimeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -52,11 +52,11 @@ public class WebUtils {
                          <ul id="ToWeb" class="listUll2" style="position:relative;">
                           <li class="mr5">
                            <div class="libox">
-                            <a href="https://m.raoniao.com/rentiyishu/32765.html"><img src="https://pic.99ym.cn/d/qqre/202101/6spw5ba2x3dy.jpg" lazysrc="https://pic.99ym.cn/d/qqre/202101/6spw5ba2x3dy.jpg"><p>巨乳美女尤妮丝吊床上各种诱惑姿势天真人体艺术图片</p></a>
+                            <a href="https://m.raoniao.com/rentiyishu/32765.html"><img src="https://pic.99ym.cn/d/qqre/202101/6spw5ba2x3dy.jpg" lazysrc="https://pic.99ym.cn/d/qqre/202101/6spw5ba2x3dy.jpg"><p>史蒂文无</p></a>
                            </div></li>
                           <li>
                            <div class="libox">
-                            <a href="https://m.raoniao.com/neiyimeinv/32637.html"><img src="https://pic.99ym.cn/d/qqre/202101/16hv32qie5lf.jpg" lazysrc="https://pic.99ym.cn/d/qqre/202101/16hv32qie5lf.jpg"><p>巨乳细腰控美女尤妮丝猫儿情趣女仆制服水蛇腰吸精男人命</p></a>
+                            <a href="https://m.raoniao.com/neiyimeinv/32637.html"><img src="https://pic.99ym.cn/d/qqre/202101/16hv32qie5lf.jpg" lazysrc="https://pic.99ym.cn/d/qqre/202101/16hv32qie5lf.jpg"><p>是的发送到</p></a>
                            </div></li>
                          */
                         doc = Jsoup.parse(new URL(line), 20000);
@@ -142,7 +142,7 @@ public class WebUtils {
 
                                     结构3：
                                     <div class="ArticleBox">
-                                     <a class="" href="/rentiyishu/28025_5.html"> <img alt="尤蜜荟性感女神尤妮丝霸屏白嫩双峰巨乳美臀风情万种第4张" src="https://img.99ym.cn/d/fiel/20190526/ifvs25puu3v.jpg"> </a>
+                                     <a class="" href="/rentiyishu/28025_5.html"> <img alt="卫栖梧二去玩儿第4张" src="https://img.99ym.cn/d/fiel/20190526/ifvs25puu3v.jpg"> </a>
                                      <p><a class="" href="/rentiyishu/28025_5.html"></a> </p>
                                     </div>
                                 */

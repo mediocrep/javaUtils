@@ -1,6 +1,6 @@
-package com.utils;
+package com.util;
 
-import com.utils.constants.Constants;
+import com.util.constants.Constants;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

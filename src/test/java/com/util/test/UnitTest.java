@@ -1,9 +1,9 @@
-package com.utils.test;
+package com.util.test;
 
 //import java.util.Base64;
 
-import com.utils.PoiUtils;
-import com.utils.ThreadUtils;
+import com.util.PoiUtils;
+import com.util.ThreadUtils;
 import org.testng.annotations.Test;
 
 import java.sql.Connection;

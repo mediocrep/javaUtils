@@ -1,4 +1,4 @@
-package com.utils.entity;
+package com.util.entity;
 
 import com.sun.istack.internal.NotNull;
 import jdk.nashorn.internal.objects.annotations.Constructor;
