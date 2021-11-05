@@ -28,7 +28,7 @@ public class WebUtils {
         // 读取 file 文件中的urls
         Files.lines(Paths.get(urlFile)).forEach(line -> {
             if (StringUtils.isNotBlank(line) && !line.startsWith("#")) {
-                if (line.endsWith(".html")) {
+                if (line.endsWith(".html") && !line.contains("tag")) {
                     // eg. "https://m.raoniao.com/rentiyishu/32269.html"
                     String localPath1 = localPath + "/" + TimeUtils.getTimeStr("YYYYMMdd");
                     File dir = new File(localPath1);
@@ -36,10 +36,10 @@ public class WebUtils {
                         dir.mkdirs();
                     }
                     batchGetPicByHtml(line, localPath1, counter);
-                } else if (line.endsWith("/")) {  // 该类型的每一个网页中，都包含了多个第一种类型的url
-                    // eg. "https://m.raoniao.com/tag/younisi/"
-                    // 把所有第一种的url（即endsWith(".html")）都找出来，然后按照处理第一种的url的方式进行处理
-                    String localPath2 = localPath + line.substring(line.substring(0, line.length() - 1).lastIndexOf("/"));
+                } else if (line.contains("tag")) {  // 该类型的每一个网页中，都包含了多个第一种类型的url
+                    // eg. "https://m.raoniao.com/tag/yiyang/" ， https://m.raoniao.com/tag/yiyang/index_2.html
+                    // 在该url中找出所有第一种的url（即line.endsWith(".html") && !line.contains("tag")），然后按照处理第一种的url的方式进行处理
+                    String localPath2 = localPath + line.substring(line.indexOf("tag") + 3, line.lastIndexOf("/"));
                     File dir = new File(localPath2);
                     if (!dir.isDirectory()) {
                         dir.mkdirs();
@@ -107,7 +107,7 @@ public class WebUtils {
 
         // 循环抓取每一页的图片
         // line.equals(nextUrl) 表示 不停地处理下一页，最终处理完了所有页，最终回到了第一页；fail < 6 表示 下载失败的页面中的图片不超过5个
-        while (!line.equals(nextUrl) && fail < 6) {
+        while (!line.equals(nextUrl) && fail <= Constants.RETRY_SINGLE_PIC_SET_MAX) {
             imgUrl = "";
             tmpUrl = nextUrl;
             if (null != doc) {
@@ -119,7 +119,7 @@ public class WebUtils {
                         Element img = element.select("img").first();
                         if (null != img) { // 该if语句解决 element.select("img").first() 为 null 从而导致 java.lang.NullPointerException 的 bug
                             imgUrl = img.attr("src");
-                            while (!flag && continuingFail < 4) {
+                            while (!flag && continuingFail <= Constants.RETRY_SINGLE_PIC_MAX) {
                                 try {
                                 /*
                                     html中需要的元素的 3 种结构如下：
@@ -175,7 +175,11 @@ public class WebUtils {
                                     break;
                                 } catch (IOException e) {
                                     continuingFail++;
-                                    System.out.format("本次抓取图片 (%s) 连续失败 %d 次，将立即重试（最多重试3次）...%n", imgUrl, continuingFail);
+                                    if (continuingFail <= Constants.RETRY_SINGLE_PIC_MAX) {
+                                        System.out.format("本次抓取图片 (%s) 连续失败 %d 次，第 %d 次重试（最多重试 %d 次）...%n", imgUrl, continuingFail, continuingFail, Constants.RETRY_SINGLE_PIC_MAX);
+                                    } else {
+                                        System.out.format("本次抓取图片 (%s) 连续失败 %d 次，终止重试！%n", imgUrl, continuingFail);
+                                    }
                                     e.printStackTrace();
                                 } finally {
                                     closeStream(outputStream, fileOutputStream, inputStream, inputStream2);
@@ -239,8 +243,8 @@ public class WebUtils {
         counter.put("fail", counter.get("fail") + fail);
         counter.put("exist", counter.get("exist") + exist);
         System.out.format("URL: %s，本轮抓取图片总数：%d，其中成功数：%d（抓取成功的图片中，本身存在于本地不用抓取的图片数为：%d），失败数：%d%n", line, success + fail, success, exist, fail);
-        if (fail > 5) {
-            System.out.println("另外，本轮抓取图片失败数 > 5，主动终止本轮抓取！");
+        if (fail > Constants.RETRY_SINGLE_PIC_SET_MAX) {
+            System.out.format("另外，本轮抓取图片失败数 > %d 次，主动终止本轮抓取！", Constants.RETRY_SINGLE_PIC_SET_MAX);
         }
     }
 
@@ -320,6 +324,7 @@ public class WebUtils {
         /*
         batchGetPic("data/urls.txt");  // 抓取图片总数：295，其中成功数：290，失败数：5
         batchGetPic("data/urls2.txt", Constants.LOCAL_PIC_PATH2);  // 抓取图片总数：327，其中成功数：327，失败数：0  程序总耗时：421669 毫秒！
+        batchGetPic("data/urls4.txt", Constants.LOCAL_PIC_PATH);  // 抓取图片总数：327，其中成功数：327，失败数：0  程序总耗时：421669 毫秒！
         List<String> failedPicUrls = new ArrayList<>();
         failedPicUrls.add("https://img.99ym.cn/d/file/202009/kon4ooqajgi.jpg");
         failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/nz55wxjbqs5.jpg");
@@ -328,9 +333,8 @@ public class WebUtils {
         failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/jfb4d53p4rs.jpg");
         batchGetFailedPics(failedPicUrls);
         */
-
-        batchGetPic("data/urls4.txt", Constants.LOCAL_PIC_PATH);  // 抓取图片总数：327，其中成功数：327，失败数：0  程序总耗时：421669 毫秒！
-
+        // 程序抓取图片总数：639，其中成功数：633（抓取成功的图片中，本身存在于本地不用抓取的图片数为：0），失败数：6   程序总耗时：558393 毫秒！
+        batchGetPic("data/urls5.txt", Constants.LOCAL_PIC_PATH);
         long end = System.currentTimeMillis();
         System.out.println("程序总耗时：" + (end - start) + " 毫秒！");
     }
