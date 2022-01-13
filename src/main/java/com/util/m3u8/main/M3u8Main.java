@@ -12,7 +12,7 @@ import com.util.m3u8.utils.Constant;
 
 public class M3u8Main {
 
-    private static final String M3U8URL = "https://youku.cdn-56.com/20180109/2SwCGxb4/index.m3u8";
+    // private static final String M3U8URL = "https://youku.cdn-56.com/20180109/2SwCGxb4/index.m3u8";
     // private static final String M3U8URL = "https://laoya2.77lehuo.com/20211019/Ws8jKkDh5/index.m3u8"; new1
     // private static final String M3U8URL = "https://laoya2.77lehuo.com/20210926/ZgZ6sDHk2/index.m3u8"; new2
     // private static final String M3U8URL = "https://laoya2.77lehuo.com/20210419/f3042IZH8/index.m3u8"; new3
@@ -20,6 +20,7 @@ public class M3u8Main {
     // private static final String M3U8URL = "https://laoya2.77lehuo.com/20210720/ZeFYr03491/index.m3u8"; // new5
     // private static final String M3U8URL = "https://laoya.77lehuo.com/20210417/W7dmFwfo3/index.m3u8"; // new6
     // private static final String M3U8URL = "https://laoya2.77lehuo.com/20211018/D9Tp5MXs2/index.m3u8"; // new7
+    private static final String M3U8URL = "https://laoya2.77lehuo.com/20210928/3D8NvO0C6/index.m3u8"; // new8
 
     public static void main(String[] args) {
 
