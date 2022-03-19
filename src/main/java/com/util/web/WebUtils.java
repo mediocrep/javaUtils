@@ -1,4 +1,4 @@
-package com.util.webpage;
+package com.util.web;
 
 import com.util.constants.Constants;
 import com.util.TimeUtils;
@@ -11,7 +11,9 @@ import org.jsoup.select.Elements;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
@@ -284,6 +286,47 @@ public class WebUtils {
         }
     }
 
+
+    /**
+     * 获取文字 from dynamic-datasource文档
+     * @param urlFile
+     * @param localPath
+     * @throws IOException
+     */
+    public static void batchGetWord(String urlFile, final String localPath) throws IOException {
+
+        /*Map<String, Integer> counter = new HashMap<>();
+        counter.put("success", 0);
+        counter.put("fail", 0);
+        counter.put("exist", 0);*/
+        // 读取 file 文件中的urls
+        Files.lines(Paths.get(urlFile)).filter(line -> StringUtils.isNotBlank(line) && !line.startsWith("#")).forEach(line -> {
+            Document doc = null;
+            try {
+                    /*
+                    html中需要的元素的结构如下：
+                     */
+                String[] split = line.split(":::");
+                doc = Jsoup.parse(new URL(split[0]), 20000);
+                System.out.println(doc);
+                String content = doc.select("div.content").first().html();
+//                System.out.println(content);
+
+//                doc.select("ul#ToWeb").first().select("a").stream().forEach(element -> batchGetPicByHtml(element.attr("href"), localPath2, counter));
+
+                Path path = Paths.get(Constants.LOCAL_DYNAMIC_DATASOURCE_PATH);
+                Files.write(path, content.getBytes(StandardCharsets.UTF_8));
+
+            } catch (IOException e) {
+                System.out.format("解析url (%s) 失败%n", line);
+                e.printStackTrace();
+            }
+        });
+
+        /*System.out.format("%n程序抓取图片总数：%d，其中成功数：%d（抓取成功的图片中，本身存在于本地不用抓取的图片数为：%d），失败数：%d%n", counter.get("success") + counter.get("fail"),
+                counter.get("success"), counter.get("exist"), counter.get("fail"));*/
+    }
+
     private static void closeStream(OutputStream outputStream, FileOutputStream fileOutputStream, InputStream inputStream, InputStream inputStream2) {
         if (null != outputStream) {
             try {
@@ -316,26 +359,5 @@ public class WebUtils {
                 e.printStackTrace();
             }
         }
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        long start = System.currentTimeMillis();
-        /*
-        batchGetPic("data/urls.txt");  // 抓取图片总数：295，其中成功数：290，失败数：5
-        batchGetPic("data/urls2.txt", Constants.LOCAL_PIC_PATH2);  // 抓取图片总数：327，其中成功数：327，失败数：0  程序总耗时：421669 毫秒！
-        batchGetPic("data/urls4.txt", Constants.LOCAL_PIC_PATH);  // 抓取图片总数：327，其中成功数：327，失败数：0  程序总耗时：421669 毫秒！
-        List<String> failedPicUrls = new ArrayList<>();
-        failedPicUrls.add("https://img.99ym.cn/d/file/202009/kon4ooqajgi.jpg");
-        failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/nz55wxjbqs5.jpg");
-        failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/0ni0hon2rvi.jpg");
-        failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/jp2awerd4rn.jpg");
-        failedPicUrls.add("https://pic.99ym.cn/d/qqre/20200427/jfb4d53p4rs.jpg");
-        batchGetFailedPics(failedPicUrls);
-        */
-        // 程序抓取图片总数：639，其中成功数：633（抓取成功的图片中，本身存在于本地不用抓取的图片数为：0），失败数：6   程序总耗时：558393 毫秒！
-        batchGetPic("data/urls5.txt", Constants.LOCAL_PIC_PATH);
-        long end = System.currentTimeMillis();
-        System.out.println("程序总耗时：" + (end - start) + " 毫秒！");
     }
 }

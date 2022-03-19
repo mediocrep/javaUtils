@@ -4,11 +4,13 @@ package com.util.test;
 
 import com.util.PoiUtils;
 import com.util.ThreadUtils;
+import com.util.threadTask.Test3Task;
 import org.testng.annotations.Test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UnitTest {
@@ -58,10 +60,36 @@ public class UnitTest {
 
     @Test
     public void test3(){
-        List<List<String>> dataList = ThreadUtils.getDataList();
-        for (List<String> list : dataList){
-            list.forEach(data -> System.out.println(data));
+        List<List<String>> list = new ArrayList<>();
+
+        List<String> l1 = new ArrayList<>();
+        l1.add("a1");
+        l1.add("a2");
+        list.add(l1);
+        l1 = new ArrayList<>();
+        l1.add("b1");
+        l1.add("b2");
+        list.add(l1);
+
+        for (List<String> l : list){
+            // list.forEach(data -> System.out.println(data));
+            System.out.println(l.hashCode());
+            System.out.println(l);
+            System.out.println("-----------------------");
         }
+
+        System.out.println(list);
+    }
+
+    @Test
+    public void test4() {
+        String reportNo = "RP02-200100000003";
+        final Test3Task test3Task = new Test3Task(2020, "RP02-200100000003");
+        final Test3Task test3Task2 = new Test3Task(3020, "SP02-200100000003");
+        final Test3Task test3Task3 = new Test3Task(4020, "TP02-200100000003");
+        ThreadUtils.getDataList2(test3Task);
+        System.out.println("--------------------------------------------------");
+        System.out.println(ThreadUtils.getStringList(test3Task, test3Task2, test3Task3));
     }
 
 

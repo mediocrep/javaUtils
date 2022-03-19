@@ -46,7 +46,12 @@ public class TimeUtils {
     }
 
     public static Long getTime() {
-        return getTime(LocalDateTime.now());
+        // return getTime(LocalDateTime.now());
+        return System.currentTimeMillis();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
     }
 
 }

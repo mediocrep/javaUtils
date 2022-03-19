@@ -19,6 +19,7 @@ public interface Constants {
     public static final String REPORT_TITLE = "参加调研的样本数量";
 
     public static final String LOCAL_PIC_PATH = "/home/witt/ettmt/pic/beau";
+    public static final String LOCAL_DYNAMIC_DATASOURCE_PATH = "/home/witt/1project/microservices/doc/dynamic_datasource/dynamic_datasource_doc.md";
     public static final int RETRY_SINGLE_PIC_MAX = 3;  // 单张图片
     public static final int RETRY_SINGLE_PIC_SET_MAX = 5;  // 一套图片
 
