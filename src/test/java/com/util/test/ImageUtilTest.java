@@ -1,6 +1,6 @@
 package com.util.test;
 
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -15,9 +15,9 @@ import java.util.Date;
  * 大小图合并工具类
  * @author Administrator
  */
+@Slf4j
 public class ImageUtilTest {
-	private static final Logger log = Logger.getLogger(ImageUtilTest.class);
-	
+
 	private final int WIDTH =220;
 	
 	private final int HEIGHT = 165;

@@ -1,5 +1,7 @@
 package com.util.m3u8.listener;
 
+import java.io.IOException;
+
 public interface DownloadListener {
 
     void start();

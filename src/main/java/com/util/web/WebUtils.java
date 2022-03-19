@@ -2,6 +2,7 @@ package com.util.web;
 
 import com.util.constants.Constants;
 import com.util.TimeUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class WebUtils {
 
     public static void batchGetPic(String urlFile, final String localPath) throws IOException {
@@ -104,7 +106,7 @@ public class WebUtils {
             doc = Jsoup.parse(new URL(line), 20000);
         } catch (IOException e) {
             System.out.format("解析url (%s) 失败%n", line);
-            e.printStackTrace();
+            log.error(e.toString());
         }
 
         // 循环抓取每一页的图片
