@@ -1,5 +1,6 @@
 package com.util.m3u8.download;
 
+import com.util.constants.Constants;
 import com.util.m3u8.exception.M3u8Exception;
 import com.util.m3u8.listener.DownloadListener;
 import com.util.m3u8.utils.Constant;
@@ -326,7 +327,7 @@ public class M3u8DownloadFactory {
                             Log.e("解密失败！");
                             break;
                         }
-                        Log.d("第" + count + "获取链接重试！\t" + urls);
+                        Log.d("第" + count + "次获取链接重试！\t" + urls);
                         count++;
 //                        e.printStackTrace();
                     } finally {
@@ -509,7 +510,7 @@ public class M3u8DownloadFactory {
                     Log.i(content);
                     break;
                 } catch (Exception e) {
-                    Log.d("第" + count + "获取链接重试！\t" + urls);
+                    Log.d("第" + count + "次获取链接重试！\t" + urls);
                     count++;
 //                    e.printStackTrace();
                 } finally {
@@ -676,7 +677,9 @@ public class M3u8DownloadFactory {
 
         private M3u8Download(String downloadUrl) {
             this.downloadUrl = downloadUrl;
-            requestHeaderMap.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36");
+            requestHeaderMap.put("Referer", Constants.REFERER_LINUX);
+//            requestHeaderMap.put("User-Agent", Constants.USER_AGENT_WINDOWS);
+            requestHeaderMap.put("User-Agent", Constants.USER_AGENT_LINUX);
         }
 
         public Proxy getProxy() {
