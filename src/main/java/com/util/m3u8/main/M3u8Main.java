@@ -26,7 +26,7 @@ import java.util.*;
 
 @Slf4j
 public class M3u8Main {
-     private static final Formatter FORMATTER = new Formatter(new StringBuilder());
+    private static final Formatter FORMATTER = new Formatter(new StringBuilder());
 
     /*
     把要下载的m3u8链接放在这里。
@@ -50,13 +50,13 @@ public class M3u8Main {
     private static final String URL_1_RENSHIJIAN = "https://sx0372.com/vodplay/104803-2-%s.html";
 
     public static void main(String[] args) {
-        List<Map<String,String>> m3u8UrlList = new ArrayList<>();
+        List<Map<String, String>> m3u8UrlList = new ArrayList<>();
         int counter = 53;
         String link_next = FORMATTER.format(URL_1_RENSHIJIAN, counter).toString();
         String m3u8Url = "";
         Document doc = null;
         while (!HOST_RENSHIJIAN.equals(link_next) && !(HOST_RENSHIJIAN + "null").equals(link_next)
-            && counter <= 53) {
+                && counter <= 53) {
             log.info("link_{}: {}", counter, link_next);
             /*
             原始url示例：https://sx0372.com/vodplay/104803-2-1.html
@@ -68,8 +68,11 @@ public class M3u8Main {
             然后去掉里面的反斜杠，得到最终的m3u8Url: https://ukzy.ukubf3.com/20220301/8Oo9lD60/index.m3u8
             最后，把最终的m3u8Url存入m3u8UrlList
              */
-          try {
+            try {
                 doc = Jsoup.parse(new URL(link_next), 20000);
+
+                // 这一段代码是解析网页，获取m3u8Url 和 下一个视频的网址。
+                //   根据网页的不同，可能会有差异，到时候可能需要根据实际情况进行调整
                 Optional<String> optional = doc.select("script").stream()
                         .filter(ele -> ele.toString().contains("player_aaaa"))
                         .map(ele -> ele.html().split("=")[1])
@@ -161,7 +164,7 @@ public class M3u8Main {
             // 必须等到第一个文件下载完毕，再下载下一个文件，否则多个文件的多个线程之间会相互影响，报错
             //      while条件：目标视频文件未生成，或者 ts文件分片未删除
             while (!Files.exists(Paths.get(downloadDir + File.separator + m3u8.get("fileName") + SUFFIX_RENSHIJIAN))
-                || Files.exists(Paths.get(downloadDir + File.separator + "1.xyz"))) {
+                    || Files.exists(Paths.get(downloadDir + File.separator + "1.xyz"))) {
                 try {
                     Thread.sleep(3000L);
                 } catch (InterruptedException e) {
